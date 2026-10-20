@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<form action="registro" method="post">
+    <fieldset>
+        <legend>Formulario De Registro</legend>
+    </fieldset>
+    <fieldset>
+		<legend>DATOS PERSONALES</legend>
+		<label for="nombre">NOMBRE COMPLETO:</label>
+		<input placeholder="Nombre(s) y apellidos" id="nombre" name="nombre" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" required>
+        <label for="Fecha">FECHA DE NACIMIENTO:</label>
+        <input type="date" id="fecha" name="fecha" min="1927-01-01" max="2008-12-31" required>
+        <label for="Genero">Genero:</label>
+        <select id="genero" name="genero" required>
+            <option value="" disabled selected>Selecciona una opción...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="No binari@">No binari@</option>
+            <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+        </select>
+
+        <fieldset>
+            <legend>DATOS DE CONTACTO</legend>
+        <label for="email">CORREO ELECTRONICO:</label>
+        <input placeholder="ej: nombre@dominio.com" id="correo" name="correo" type="email" required>
+        <label for="telefono">TELEFONO:</label>
+        <input type="tel" id="telefono" name="telefono" minlength="10" maxlength="10" placeholder="ej: 3226789152" pattern="[0-9]{10}" required>
+        <label for="Cedula">CEDULA DE CIUDADANIA:</label>
+        <input type="tel" id="cedula" name="cedula" minlength="10" maxlength="10" pattern="[0-9]{7,10}" placeholder="ej: 1234567891" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>PAIS DE ORIGEN</legend>
+        <label for="pais">Pais:</label>
+		<input list="paises" id="pais-origen" name="pais" placeholder="Escribe o selecciona...">
+        <datalist id="paises">
+            <option value="Colombia"></option>
+            <option value="Mexico"></option>
+            <option value="Venezuela"></option>
+            <option value="Chile"></option>
+            <option value="Panama"></option>
+            <input type="text" placeholder="Especifique" required>
+        </datalist>
+        </fieldset>
+
+        <fieldset>
+            <legend>PAIS DE RESIDENCIA</legend>
+        <label for="pais">Pais:</label>
+		<input list="paises" id="pais-residencia" name="pais" placeholder="Escribe o selecciona...">
+        <datalist id="paises">
+            <option value="Colombia"></option>
+            <option value="Mexico"></option>
+            <option value="Venezuela"></option>
+            <option value="Chile"></option>
+            <option value="Panama"></option>
+            <input type="text" placeholder="Especifique" required>
+        </datalist>
+        </fieldset>
+
+    <fieldset> 
+        <legend>MENSAJE</legend>
+        <label for="capacidad-msj">Límite recomendado de texto:</label>
+        <meter id="capacidad-msj" value="0" min="0" max="200" low="50" high="150" optimum="80"></meter>
+        <label for="msj"></label>
+	    <textarea id="msj" placeholder="Informacion adicional" name="msj" rows="2" maxlength="200" required></textarea>
+		<button type="submit">
+		<i class="fa-solid fa-paper-plane"></i>Enviar Registro
+		</button>
+		<button type="reset">
+		<i class="fa-solid fa-paper-plane"></i>Limpiar Registro
+		</button>
+    </fieldset>
+    </fieldset>
+</form>
+
+<script>
+    const textarea = document.getElementById('msj');
+    const medidor = document.getElementById('capacidad-msj');
+
+    textarea.addEventListener('input', () => {
+        medidor.value = textarea.value.length;
+    });
+</script>
